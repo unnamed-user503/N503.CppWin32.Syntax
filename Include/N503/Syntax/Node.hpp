@@ -39,10 +39,19 @@ namespace N503::Syntax
         /// @param child 追加する子ノードのポインタ
         auto AddChild(Node* child) -> void
         {
+            child->SetParent(this);
+
             if (child)
             {
-                m_Children.push_back(std::move(child));
+                m_Children.push_back(child);
             }
+        }
+
+        /// @brief 親のノードを取得します
+        /// @return 親のノードへのポインタ
+        auto GetParent() const -> Node*
+        {
+            return m_Parent;
         }
 
         /// @brief 全ての子ノードを取得します
@@ -54,11 +63,22 @@ namespace N503::Syntax
         }
 
     private:
+        /// @brief 親ノードを設定します
+        /// @param parent 親ノードへのポインタ
+        auto SetParent(Node* parent) -> void
+        {
+            m_Parent = parent;
+        }
+
+    private:
         /// @brief ノードの型（種類）
         NodeType m_Type;
 
         /// @brief ノードが保持するトークン情報
         Token m_Token;
+
+        /// @brief 親ノードへのポインタ
+        Node* m_Parent;
 
         /// @brief 子ノードのリスト
         std::vector<Node*> m_Children;
