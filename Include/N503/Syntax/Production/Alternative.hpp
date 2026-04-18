@@ -37,7 +37,7 @@ namespace N503::Syntax::Production
                 auto transaction = reader.BeginTransaction();
 
                 // プロダクションの実行
-                auto branchResult = TProducers{}.Produce(reader, sink, arena);
+                auto branchResult = TProducers{}.Produce(reader, arena, sink);
 
                 if (!branchResult.empty())
                 {
