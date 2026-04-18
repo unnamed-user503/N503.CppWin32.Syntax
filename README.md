@@ -35,7 +35,8 @@ C++20 で実装された、字句解析（Lexing）および構文解析（Parsi
 `N503::Syntax::Grammar` を使用して、ルールを宣言的に記述します。
 
 ```cpp
-namespace MyProject::Grammar {
+namespace MyProject::Grammar
+{
     using namespace N503::Syntax::Grammar;
 
     // (識別子 + 等号 + 数値) を一つの "Statement" ノードとして定義
@@ -88,6 +89,38 @@ int main()
     }
 
     return 0;
+}
+```
+---
+
+## 実践的な文法定義例 (N503.CppWin32.CommandLine)
+
+```cpp
+namespace Grammar
+{
+    using namespace N503::Syntax;
+    using namespace N503::Syntax::Grammar;
+
+    // 最も基礎となる「値」の定義
+    inline constexpr auto BaseValue = (Identifier + *(Lexeme<"."> + Identifier));
+
+    // AtomicValue を先に定義
+    inline constexpr auto AtomicValue = (String | BaseValue | Number | Identifier);
+
+    // オプション形式の定義 (AtomicValue を使用)
+    inline constexpr auto LongOption = (Lexeme<"--"> + Identifier + Lexeme<"="> + AtomicValue).As<NodeType::LongOption>();
+    inline constexpr auto ShortOption = (Lexeme<"-"> + Identifier).As<NodeType::ShortOption>();
+
+    // 代入形式と位置引数の定義
+    inline constexpr auto Property = (Identifier + Lexeme<"="> + AtomicValue).As<NodeType::Property>();
+    inline constexpr auto PositionalItem = (Property | AtomicValue);
+
+    // グループ化とルート定義
+    inline constexpr auto Options = *(LongOption | ShortOption);
+    inline constexpr auto PositionalGroup = (*PositionalItem).As<NodeType::PositionalGroup>();
+
+    // 最終的な Root (Options と PositionalGroup を連結)
+    inline constexpr auto Root = (*(LongOption | ShortOption | Property | PositionalGroup)).As<NodeType::Root>();
 }
 ```
 
