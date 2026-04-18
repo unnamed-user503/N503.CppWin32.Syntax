@@ -91,7 +91,6 @@ int main()
     return 0;
 }
 ```
----
 
 ## 実践的な文法定義例 (N503.CppWin32.CommandLine)
 
