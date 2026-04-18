@@ -10,11 +10,11 @@ namespace N503::Syntax::Scanning
 {
 
     /// @brief 開始文字と終了文字で囲まれた範囲（文字列リテラルや括弧など）をスキャンするテンプレート構造体
-    /// @tparam Type 生成されるトークンの種類（TokenType）
+    /// @tparam TType 生成されるトークンの種類（TokenType）
     /// @tparam THead 開始文字の妥当性を判定する関数オブジェクト型
     /// @tparam TContent 内部に含まれる文字の妥当性を判定する関数オブジェクト型
     /// @tparam TEnd 終了文字（閉じ文字）の妥当性を判定する関数オブジェクト型
-    template <TokenType Type, typename THead, typename TContent, typename TEnd> struct EnclosureScanner
+    template <TokenType TType, typename THead, typename TContent, typename TEnd> struct EnclosureScanner
     {
         /// @brief リーダーから囲み構造を読み取り、トークンを抽出します
         /// @param reader 文字入力ストリーム
@@ -72,7 +72,7 @@ namespace N503::Syntax::Scanning
 
             // 少なくとも開始文字（Head）は消費しているため、不完全な囲みであっても
             // 読み取れた範囲を一つのトークンとして生成し、後続の解析（Parser等）に委ねる
-            return Token{ .Type = Type, .Lexeme = reader.View(startState), .location = startState };
+            return Token{ .Type = TType, .Lexeme = reader.View(startState), .Position = startState.Position };
         }
     };
 

@@ -1,7 +1,6 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
-#include <N503/Syntax/Reader/State.hpp>
+#include <N503/Diagnostics/Sink.hpp>
 #include <stdexcept>
 
 namespace N503::Syntax::Reader::Guard

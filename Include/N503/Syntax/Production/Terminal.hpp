@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
-#include <N503/Memory.hpp>
+#include <N503/Diagnostics/Sink.hpp>
+#include <N503/Memory/Storage/Arena.hpp>
 #include <N503/Syntax/Node.hpp>
 #include <N503/Syntax/NodeType.hpp>
 #include <N503/Syntax/Reader/Reader.hpp>

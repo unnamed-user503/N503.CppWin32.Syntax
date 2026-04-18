@@ -1,7 +1,8 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
-#include <N503/Memory.hpp>
+#include <N503/Diagnostics/Severity.hpp>
+#include <N503/Diagnostics/Sink.hpp>
+#include <N503/Memory/Storage/Arena.hpp>
 #include <N503/Syntax/Node.hpp>
 #include <N503/Syntax/NodeType.hpp>
 #include <N503/Syntax/Reader/Guard/ProgressGuard.hpp>
@@ -59,7 +60,7 @@ namespace N503::Syntax::Parsing
                     rootNode->AddChild(arena.Create<Node>(NodeType::Unknown, *token));
 
                     // 診断シンクに予期せぬトークンの発生を報告
-                    sink.Report({ N503::Diagnostics::Severity::Error, token->Position, "Unexpected token: Input could not be matched with any production." });
+                    sink.AddEntry({ N503::Diagnostics::Severity::Error, "Unexpected token: Input could not be matched with any production.", token->Position });
                 }
 
                 // 1トークン分強制的に進めて解析を続行

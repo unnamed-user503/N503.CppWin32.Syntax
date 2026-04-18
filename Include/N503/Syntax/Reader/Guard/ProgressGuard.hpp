@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
 #include <N503/Syntax/Reader/State.hpp>
 #include <stdexcept>
 

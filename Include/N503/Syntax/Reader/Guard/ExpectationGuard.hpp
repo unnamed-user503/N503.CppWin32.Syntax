@@ -1,8 +1,7 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
-#include <N503/Syntax/Reader/State.hpp>
-#include <stdexcept>
+#include <N503/Diagnostics/Sink.hpp>
+#include <N503/Diagnostics/Severity.hpp>
 
 namespace N503::Syntax::Reader::Guard
 {

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics.hpp>
+#include <N503/Diagnostics/Sink.hpp>
 #include <N503/Syntax/Reader/Reader.hpp>
 #include <N503/Syntax/Token.hpp>
 #include <N503/Syntax/TokenType.hpp>
