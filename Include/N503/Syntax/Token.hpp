@@ -27,26 +27,32 @@ namespace N503::Syntax
     {
         switch (type)
         {
-        case TokenType::Unknown:
-            return "Unknown";
+            case TokenType::Unknown:
+                return "Unknown";
 
-        case TokenType::Done:
-            return "Done";
+            case TokenType::Done:
+                return "Done";
 
-        case TokenType::Whitespace:
-            return "Whitespace";
+            case TokenType::Whitespace:
+                return "Whitespace";
 
-        case TokenType::Identifier:
-            return "Identifier";
+            case TokenType::Identifier:
+                return "Identifier";
 
-        case TokenType::Number:
-            return "Number";
+            case TokenType::Number:
+                return "Number";
 
-        case TokenType::Operator:
-            return "Operator";
+            case TokenType::Operator:
+                return "Operator";
 
-        default:
-            return "Invalid";
+            case TokenType::String:
+                return "String";
+
+            case TokenType::None:
+                return "Ignore";
+
+            default:
+                return "Invalid";
         }
     }
 

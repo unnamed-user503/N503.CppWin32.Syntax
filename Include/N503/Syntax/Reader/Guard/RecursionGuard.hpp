@@ -17,8 +17,7 @@ namespace N503::Syntax::Reader::Guard
         /// @param reader 監視対象のリーダー
         /// @param limit 再帰深度の許容制限値
         /// @throw std::runtime_error 再帰深度が制限値を超えた場合にスローされます。
-        explicit RecursionGuard(TReader& reader, const std::size_t limit)
-            : m_Reader{ reader }
+        explicit RecursionGuard(TReader& reader, const std::size_t limit) : m_Reader{ reader }
         {
             auto state = m_Reader.GetState();
             state.Depth++; // 深度をインクリメント

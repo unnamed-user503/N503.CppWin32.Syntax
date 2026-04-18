@@ -7,10 +7,10 @@
 namespace N503::Syntax
 {
 
-    /// @brief 
+    /// @brief
     struct Token;
 
-}
+} // namespace N503::Syntax
 
 namespace N503::Syntax::Reader
 {

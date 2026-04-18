@@ -27,8 +27,7 @@ namespace N503::Syntax::Reader
     public:
         /// @brief コンストラクタ
         /// @param source 読み取り対象のソース
-        explicit Reader(const typename TTraits::SourceType source)
-            : m_Source{ source }
+        explicit Reader(const typename TTraits::SourceType source) : m_Source{ source }
         {
         }
 

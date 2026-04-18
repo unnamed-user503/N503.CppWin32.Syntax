@@ -14,9 +14,7 @@ namespace N503::Syntax::Reader::Guard
     public:
         /// @brief ガードを初期化し、現在のリーダーの状態を保存します。
         /// @param reader 監視対象のリーダー
-        explicit ProgressGuard(const TReader& reader)
-            : m_Reader{ reader }
-            , m_StartState{ reader.GetState() }
+        explicit ProgressGuard(const TReader& reader) : m_Reader{ reader }, m_StartState{ reader.GetState() }
         {
         }
 

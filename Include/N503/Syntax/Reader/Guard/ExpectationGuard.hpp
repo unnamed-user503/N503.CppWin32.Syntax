@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include <N503/Diagnostics/Sink.hpp>
 #include <N503/Diagnostics/Severity.hpp>
+#include <N503/Diagnostics/Sink.hpp>
 
 namespace N503::Syntax::Reader::Guard
 {
@@ -16,10 +16,7 @@ namespace N503::Syntax::Reader::Guard
         /// @brief ガードを初期化します。
         /// @param reader 現在の状態を取得するためのリーダー
         /// @param sink エラーを報告する先の診断シンク
-        ExpectationGuard(const TReader& reader, Diagnostics::Sink& sink)
-            : m_Reader{ reader }
-            , m_Sink{ sink }
-            , m_IsCommitted{ false }
+        ExpectationGuard(const TReader& reader, Diagnostics::Sink& sink) : m_Reader{ reader }, m_Sink{ sink }, m_IsCommitted{ false }
         {
         }
 

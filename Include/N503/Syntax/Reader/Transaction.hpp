@@ -12,10 +12,7 @@ namespace N503::Syntax::Reader
     public:
         /// @brief コンストラクタ。現在のリーダーの状態を保存します。
         /// @param reader 操作対象のリーダー
-        explicit Transaction(TReader& reader)
-            : m_Reader{ reader }
-            , m_SavedState{ reader.GetState() }
-            , m_IsCommitted{ false }
+        explicit Transaction(TReader& reader) : m_Reader{ reader }, m_SavedState{ reader.GetState() }, m_IsCommitted{ false }
         {
         }
 

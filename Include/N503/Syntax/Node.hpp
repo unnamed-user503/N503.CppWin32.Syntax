@@ -15,10 +15,7 @@ namespace N503::Syntax
         /// @brief コンストラクタ
         /// @param Type ノードの種類（NodeType）
         /// @param token ノードに関連付けられたトークン（省略可能）
-        explicit Node(const NodeType type, const Token& token = {})
-            : m_Type{ type }
-            , m_Token{ token }
-            , m_Children{}
+        explicit Node(const NodeType type, const Token& token = {}) : m_Type{ type }, m_Token{ token }, m_Children{}
         {
         }
 

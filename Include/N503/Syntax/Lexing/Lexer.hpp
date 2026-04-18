@@ -35,10 +35,12 @@ namespace N503::Syntax::Lexing
                 // C++20: ジェネリックラムダに対するテンプレート引数の明示と畳み込み式 (|| ...)
                 // 可変長引数 TRules に含まれる各スキャナーの Scan メソッドを順番に実行する。
                 // いずれかの T::Scan が値を返した時点で短絡評価により以降のスキャンはスキップされる。
-                (void)((result = [&]<typename T>()
+                (void)((result =
+                            [&]<typename T>()
                 {
                     return T::Scan(reader);
-                }.template operator()<TRules>()) || ...);
+                }.template operator()<TRules>()) ||
+                       ...);
 
                 if (result)
                 {
