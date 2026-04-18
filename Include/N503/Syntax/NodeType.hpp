@@ -18,9 +18,7 @@ namespace N503::Syntax
 
         LongOption,
         ShortOption,
-
         SwitchOption,
-
         Property,
         PositionalGroup,
 

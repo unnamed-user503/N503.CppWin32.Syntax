@@ -19,10 +19,18 @@ namespace N503::Syntax
         {
         }
 
+        /// @brief Copy禁止
+        Node(const Node&) = delete;
+        auto operator=(const Node&) -> Node& = delete;
+
+        /// @brief Move禁止
+        Node(Node&&) = delete;
+        auto operator=(Node&&) -> Node& = delete;
+
         /// @brief ノードの種類を取得します
         /// @return ノードの種類
         [[nodiscard]]
-        auto GetType() const -> NodeType
+        auto GetType() const noexcept -> NodeType
         {
             return m_Type;
         }
@@ -30,26 +38,28 @@ namespace N503::Syntax
         /// @brief ノードに関連付けられたトークンを取得します
         /// @return トークンへの定数参照
         [[nodiscard]]
-        auto GetToken() const -> const Token&
+        auto GetToken() const noexcept -> const Token&
         {
             return m_Token;
         }
 
         /// @brief 子ノードを追加します
         /// @param child 追加する子ノードのポインタ
-        auto AddChild(Node* child) -> void
+        auto AddChild(Node* child) noexcept -> void
         {
-            child->SetParent(this);
-
-            if (child)
+            if (!child)
             {
-                m_Children.push_back(child);
+                return;
             }
+
+            child->m_Parent = this;
+
+            m_Children.push_back(child);
         }
 
         /// @brief 親のノードを取得します
         /// @return 親のノードへのポインタ
-        auto GetParent() const -> Node*
+        auto GetParent() const noexcept -> Node*
         {
             return m_Parent;
         }
@@ -57,17 +67,9 @@ namespace N503::Syntax
         /// @brief 全ての子ノードを取得します
         /// @return 子ノードのポインタを格納したベクトルへの定数参照
         [[nodiscard]]
-        auto GetChildren() const -> const std::vector<Node*>&
+        auto GetChildren() const noexcept -> const std::vector<Node*>&
         {
             return m_Children;
-        }
-
-    private:
-        /// @brief 親ノードを設定します
-        /// @param parent 親ノードへのポインタ
-        auto SetParent(Node* parent) -> void
-        {
-            m_Parent = parent;
         }
 
     private:
