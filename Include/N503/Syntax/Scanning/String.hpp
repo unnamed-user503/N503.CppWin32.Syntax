@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Lexing/IsQuote.hpp>
 #include <N503/Syntax/Lexing/Not.hpp>

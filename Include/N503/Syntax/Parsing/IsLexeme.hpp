@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Parsing/FixedString.hpp>
 #include <N503/Syntax/Token.hpp>

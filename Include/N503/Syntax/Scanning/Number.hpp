@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Lexing/IsNumberBody.hpp>
 #include <N503/Syntax/Lexing/IsNumberHead.hpp>

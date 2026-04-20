@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Node.hpp>
 #include <N503/Syntax/NodeType.hpp>

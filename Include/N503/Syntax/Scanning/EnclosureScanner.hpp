@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Reader/Guard/ProgressGuard.hpp>
 #include <N503/Syntax/Reader/Reader.hpp>

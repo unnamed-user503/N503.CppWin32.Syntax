@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Grammar/Atom.hpp>
 #include <N503/Syntax/Parsing/IsType.hpp>

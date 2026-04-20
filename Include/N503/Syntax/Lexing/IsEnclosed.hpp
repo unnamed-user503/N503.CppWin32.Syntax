@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Lexing/IsNewline.hpp>
 #include <N503/Syntax/Lexing/LexerTrait.hpp>

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <N503/Syntax/Grammar/Definition.hpp>
 #include <N503/Syntax/Production/Terminal.hpp>
