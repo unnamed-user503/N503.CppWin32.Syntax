@@ -20,7 +20,7 @@ namespace N503::Syntax::Scanning
         /// @param reader 文字入力ストリーム
         /// @return トークンが抽出された場合は Token オブジェクト、開始文字が適合しない場合は std::nullopt
         [[nodiscard]]
-        static auto Scan(Reader::CharacterReader& reader) -> std::optional<Token>
+        static auto Scan(Reader::CharacterReader &reader) -> std::optional<Token>
         {
             const auto startState = reader.GetState();
             const auto head = reader.Peek();
@@ -39,7 +39,7 @@ namespace N503::Syntax::Scanning
             while (reader.CanRead())
             {
                 // 無限ループ防止用のガード
-                auto progressGuard = Reader::Guard::ProgressGuard{ reader };
+                auto progressGuard = Reader::Guard::ProgressGuard{reader};
 
                 const auto current = reader.Peek();
                 if (!current)
@@ -72,7 +72,7 @@ namespace N503::Syntax::Scanning
 
             // 少なくとも開始文字（Head）は消費しているため、不完全な囲みであっても
             // 読み取れた範囲を一つのトークンとして生成し、後続の解析（Parser等）に委ねる
-            return Token{ .Type = TType, .Lexeme = reader.View(startState), .Position = startState.Position };
+            return Token{.Type = TType, .Lexeme = reader.View(startState), .Position = startState.Position};
         }
     };
 

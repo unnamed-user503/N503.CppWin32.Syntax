@@ -19,7 +19,7 @@ namespace N503::Syntax::Scanning
         /// @brief リーダーから特定のパターンを読み取り、トークンを抽出します
         /// @param reader 文字入力ストリーム
         /// @return トークンが抽出された場合は Token オブジェクト、失敗した場合は std::nullopt
-        static auto Scan(Reader::CharacterReader& reader) -> std::optional<Token>
+        static auto Scan(Reader::CharacterReader &reader) -> std::optional<Token>
         {
             const auto startState = reader.GetState();
 
@@ -40,7 +40,7 @@ namespace N503::Syntax::Scanning
             while (reader.CanRead())
             {
                 // 無限ループ（位置が全く進まない状態）を監視するガードを配置
-                auto progressGuard = Reader::Guard::ProgressGuard{ reader };
+                auto progressGuard = Reader::Guard::ProgressGuard{reader};
 
                 // 2.Body の判定
                 const auto current = reader.Peek();
@@ -69,7 +69,7 @@ namespace N503::Syntax::Scanning
             }
 
             // 読み取り開始地点から現在の位置までのビューを使用してトークンを生成
-            return Token{ .Type = Type, .Lexeme = reader.View(startState), .Position = startState.Position };
+            return Token{.Type = Type, .Lexeme = reader.View(startState), .Position = startState.Position};
         }
     };
 

@@ -14,6 +14,10 @@ namespace N503::Syntax::Scanning
 {
 
     /// @brief
-    using Operator = DefaultScanner<TokenType::Operator, Lexing::Not<Lexing::AnyOf<Lexing::IsAlnum, Lexing::IsWhitespace, Lexing::IsQuote>>, Lexing::Never, Lexing::Always>;
+    using Operator = DefaultScanner<
+        TokenType::Operator,
+        Lexing::Not<Lexing::AnyOf<Lexing::IsAlnum, Lexing::IsWhitespace, Lexing::IsQuote>>,
+        Lexing::Never,
+        Lexing::Always>;
 
 } // namespace N503::Syntax::Scanning

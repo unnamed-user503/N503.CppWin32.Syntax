@@ -17,14 +17,14 @@ namespace N503::Syntax::Reader::Guard
         /// @param reader 監視対象のリーダー
         /// @param limit 再帰深度の許容制限値
         /// @throw std::runtime_error 再帰深度が制限値を超えた場合にスローされます。
-        explicit RecursionGuard(TReader& reader, const std::size_t limit) : m_Reader{ reader }
+        explicit RecursionGuard(TReader &reader, const std::size_t limit) : m_Reader{reader}
         {
             auto state = m_Reader.GetState();
             state.Depth++; // 深度をインクリメント
 
             if (state.Depth > limit)
             {
-                throw std::runtime_error{ "N503::Syntax::Parsing::Failsafe: Recursion limit exceeded." };
+                throw std::runtime_error{"N503::Syntax::Parsing::Failsafe: Recursion limit exceeded."};
             }
 
             m_Reader.SetState(state);
@@ -42,14 +42,14 @@ namespace N503::Syntax::Reader::Guard
         }
 
         /// @brief コピーコンストラクタ（禁止）
-        RecursionGuard(const RecursionGuard&) = delete;
+        RecursionGuard(const RecursionGuard &) = delete;
 
         /// @brief コピー代入演算子（禁止）
-        auto operator=(const RecursionGuard&) -> RecursionGuard& = delete;
+        auto operator=(const RecursionGuard &) -> RecursionGuard & = delete;
 
     private:
         /// @brief 監視対象のリーダーへの参照
-        TReader& m_Reader;
+        TReader &m_Reader;
     };
 
 } // namespace N503::Syntax::Reader::Guard

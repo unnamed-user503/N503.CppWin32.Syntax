@@ -24,7 +24,7 @@ namespace N503::Syntax::Grammar
     /// @return AとBの連結を定義した Definition オブジェクト
     template <typename T, typename U>
     [[nodiscard]]
-    constexpr auto And(const T&, const U&) noexcept
+    constexpr auto And(const T &, const U &) noexcept
     {
         return And<T, U>();
     }

@@ -16,7 +16,7 @@ namespace N503::Syntax::Production
     template <typename TProducer> struct Deferred final
     {
         /// @brief 実行対象となるプロダクションへのポインタ
-        const TProducer* const* const m_target;
+        const TProducer *const *const m_target;
 
         /// @brief 保持しているターゲットのプロダクションを実行します。
         /// @param reader トークンリーダー
@@ -24,10 +24,11 @@ namespace N503::Syntax::Production
         /// @param sink 診断情報を記録するシンク
         /// @return 生成されたノードのリスト。ターゲットが無効な場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> std::vector<Node*>
+        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
+            -> std::vector<Node *>
         {
             // 無限再帰を防ぐためのスタック深さ制限
-            auto recursionGuard = Reader::Guard::RecursionGuard{ reader, 512 };
+            auto recursionGuard = Reader::Guard::RecursionGuard{reader, 512};
 
             if (m_target && *m_target)
             {

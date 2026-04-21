@@ -13,9 +13,9 @@ namespace N503::Syntax::Grammar
     /// @return 遅延評価を定義した Definition オブジェクト
     template <typename T>
     [[nodiscard]]
-    constexpr auto Lazy(const T** ppReal) noexcept -> Definition<Production::Deferred<T>>
+    constexpr auto Lazy(const T **ppReal) noexcept -> Definition<Production::Deferred<T>>
     {
-        return { ppReal };
+        return {ppReal};
     }
 
 } // namespace N503::Syntax::Grammar

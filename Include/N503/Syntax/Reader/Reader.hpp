@@ -27,7 +27,7 @@ namespace N503::Syntax::Reader
     public:
         /// @brief コンストラクタ
         /// @param source 読み取り対象のソース
-        explicit Reader(const typename TTraits::SourceType source) : m_Source{ source }
+        explicit Reader(const typename TTraits::SourceType source) : m_Source{source}
         {
         }
 
@@ -165,7 +165,7 @@ namespace N503::Syntax::Reader
         [[nodiscard]]
         auto BeginTransaction() noexcept -> Transaction<Reader<TTraits>>
         {
-            return Transaction<Reader<TTraits>>{ *this };
+            return Transaction<Reader<TTraits>>{*this};
         }
 
     private:
@@ -173,7 +173,7 @@ namespace N503::Syntax::Reader
         typename TTraits::SourceType m_Source;
 
         /// @brief 現在のリーダーの状態
-        StateType m_CurrentState{ .Position = 0, .Depth = 0 };
+        StateType m_CurrentState{.Position = 0, .Depth = 0};
     };
 
     /// @brief 文字単位での読み取りを行うリーダーのエイリアス

@@ -17,7 +17,7 @@ namespace N503::Syntax
     {
     public:
         // ハンドラの型：対象ノードと、ユーザー定義のコンテキストを受け取る
-        using Handler = std::function<void(Node*, Context&)>;
+        using Handler = std::function<void(Node *, Context &)>;
 
     public:
         /// @brief 特定の NodeType に対する処理を登録します
@@ -35,7 +35,7 @@ namespace N503::Syntax
         /// @brief 指定したノードから再帰的に巡回を開始します
         /// @param node 開始ノード
         /// @param context 巡回中に使用する状態オブジェクト
-        auto Visit(Node* node, Context& context) -> void
+        auto Visit(Node *node, Context &context) -> void
         {
             if (!node)
             {
@@ -53,7 +53,7 @@ namespace N503::Syntax
             }
 
             // 2. 子ノードを再帰的に巡回
-            for (auto* const child : node->GetChildren())
+            for (auto *const child : node->GetChildren())
             {
                 Visit(child, context);
             }

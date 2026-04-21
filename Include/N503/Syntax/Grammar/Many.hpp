@@ -21,7 +21,7 @@ namespace N503::Syntax::Grammar
     /// @return 1回以上の繰り返しを定義した Definition オブジェクト
     template <typename T>
     [[nodiscard]]
-    constexpr auto Many(const T&) noexcept
+    constexpr auto Many(const T &) noexcept
     {
         return Many<T>();
     }

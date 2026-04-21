@@ -21,7 +21,7 @@ namespace N503::Syntax::Grammar
     /// @return 最小単位を定義した Definition オブジェクト
     template <typename TTrait>
     [[nodiscard]]
-    constexpr auto Atom(const TTrait&) noexcept
+    constexpr auto Atom(const TTrait &) noexcept
     {
         return Atom<TTrait>();
     }

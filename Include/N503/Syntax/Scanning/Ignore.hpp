@@ -9,6 +9,10 @@ namespace N503::Syntax::Scanning
 {
 
     /// @brief
-    using Ignore = DefaultScanner<TokenType::None, Lexing::IsWhitespace, Lexing::IsWhitespace, Lexing::Not<Lexing::IsWhitespace>>;
+    using Ignore = DefaultScanner<
+        TokenType::None,
+        Lexing::IsWhitespace,
+        Lexing::IsWhitespace,
+        Lexing::Not<Lexing::IsWhitespace>>;
 
 } // namespace N503::Syntax::Scanning

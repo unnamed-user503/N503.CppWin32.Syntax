@@ -21,7 +21,7 @@ namespace N503::Syntax::Grammar
     /// @return 任意性を定義した Definition オブジェクト
     template <typename T>
     [[nodiscard]]
-    constexpr auto Optional(const T&) noexcept
+    constexpr auto Optional(const T &) noexcept
     {
         return Optional<T>();
     }

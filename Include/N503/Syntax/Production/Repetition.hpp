@@ -25,17 +25,18 @@ namespace N503::Syntax::Production
         /// @param sink 診断情報を記録するシンク
         /// @return 生成されたすべてのノードのリスト。最小回数に満たない場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> std::vector<Node*>
+        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
+            -> std::vector<Node *>
         {
-            auto totalResults = std::vector<Node*>{};
-            auto matchCount = std::size_t{ 0 };
+            auto totalResults = std::vector<Node *>{};
+            auto matchCount = std::size_t{0};
 
             while (!reader.IsAtEnd())
             {
                 // ループがトークンを消費せずに回り続けるのを防ぐ
-                auto progressGuard = Reader::Guard::ProgressGuard{ reader };
+                auto progressGuard = Reader::Guard::ProgressGuard{reader};
                 auto transaction = reader.BeginTransaction();
-                auto currentNodes = std::vector<Node*>{};
+                auto currentNodes = std::vector<Node *>{};
 
                 // プロダクションとしての試行
                 if constexpr (requires { TProducer{}.Produce(reader, arena, sink); })
@@ -53,7 +54,7 @@ namespace N503::Syntax::Production
                 {
                     transaction.Commit();
 
-                    for (auto* const node : currentNodes)
+                    for (auto *const node : currentNodes)
                     {
                         totalResults.push_back(node);
                     }

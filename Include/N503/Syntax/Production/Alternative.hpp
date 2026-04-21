@@ -21,9 +21,10 @@ namespace N503::Syntax::Production
         /// @param sink 診断情報を記録するシンク
         /// @return 生成されたノードのリスト。いずれも成功しなかった場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> std::vector<Node*>
+        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
+            -> std::vector<Node *>
         {
-            auto finalResult = std::vector<Node*>{};
+            auto finalResult = std::vector<Node *>{};
 
             (void)([&]
             {

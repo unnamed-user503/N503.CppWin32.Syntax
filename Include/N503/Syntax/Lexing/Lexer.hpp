@@ -22,9 +22,9 @@ namespace N503::Syntax::Lexing
         /// @param sink エラーや警告を記録するための診断シンク
         /// @return 抽出されたトークンのリスト
         [[nodiscard]]
-        auto Tokenize(std::string_view source, Diagnostics::Sink& sink) const -> std::vector<Token>
+        auto Tokenize(std::string_view source, Diagnostics::Sink &sink) const -> std::vector<Token>
         {
-            Reader::CharacterReader reader{ source };
+            Reader::CharacterReader reader{source};
             std::vector<Token> tokens;
 
             // リーダーが終端に達するまで繰り返しスキャンを試行する
@@ -35,12 +35,7 @@ namespace N503::Syntax::Lexing
                 // C++20: ジェネリックラムダに対するテンプレート引数の明示と畳み込み式 (|| ...)
                 // 可変長引数 TRules に含まれる各スキャナーの Scan メソッドを順番に実行する。
                 // いずれかの T::Scan が値を返した時点で短絡評価により以降のスキャンはスキップされる。
-                (void)((result =
-                            [&]<typename T>()
-                {
-                    return T::Scan(reader);
-                }.template operator()<TRules>()) ||
-                       ...);
+                (void)((result = [&]<typename T>() { return T::Scan(reader); }.template operator()<TRules>()) || ...);
 
                 if (result)
                 {
@@ -59,7 +54,9 @@ namespace N503::Syntax::Lexing
                     // 解析不能な文字として1文字消費し、Unknown トークンとして記録する
                     const auto state = reader.GetState();
                     reader.Advance();
-                    tokens.push_back(Token{ .Type = TokenType::Unknown, .Lexeme = reader.View(state), .Position = state.Position });
+                    tokens.push_back(
+                        Token{.Type = TokenType::Unknown, .Lexeme = reader.View(state), .Position = state.Position}
+                    );
                 }
             }
 

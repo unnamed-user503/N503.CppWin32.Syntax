@@ -24,11 +24,12 @@ namespace N503::Syntax::Production
         /// @param sink 診断情報を記録するシンク
         /// @return 生成されたノードのリスト。存在しない場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> std::vector<Node*>
+        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
+            -> std::vector<Node *>
         {
-            auto guard = Reader::Guard::ProgressGuard{ reader };
+            auto guard = Reader::Guard::ProgressGuard{reader};
             auto transaction = reader.BeginTransaction();
-            auto resultNodes = std::vector<Node*>{};
+            auto resultNodes = std::vector<Node *>{};
 
             // プロダクションとしての試行
             if constexpr (requires { TElement{}.Produce(reader, arena, sink); })

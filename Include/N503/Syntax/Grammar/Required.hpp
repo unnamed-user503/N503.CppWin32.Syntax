@@ -22,7 +22,7 @@ namespace N503::Syntax::Grammar
     /// @return 必須要素を定義した Definition オブジェクト
     template <typename T>
     [[nodiscard]]
-    constexpr auto Required(const T&) noexcept
+    constexpr auto Required(const T &) noexcept
     {
         return Required<T>();
     }

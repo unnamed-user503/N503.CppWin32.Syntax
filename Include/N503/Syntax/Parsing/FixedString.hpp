@@ -28,7 +28,7 @@ namespace N503::Syntax::Parsing
         constexpr auto ToView() const noexcept -> std::string_view
         {
             // 終端ヌル文字を除いたサイズで view を作成
-            return { data, N - 1 };
+            return {data, N - 1};
         }
 
         /// @brief 文字列の長さを返します（終端ヌル文字を除く）。
