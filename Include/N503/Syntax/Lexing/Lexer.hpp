@@ -22,9 +22,9 @@ namespace N503::Syntax::Lexing
         /// @param sink エラーや警告を記録するための診断シンク
         /// @return 抽出されたトークンのリスト
         [[nodiscard]]
-        auto Tokenize(std::string_view source, Diagnostics::Sink &sink) const -> std::vector<Token>
+        auto Tokenize(std::string_view source, Diagnostics::Sink& sink) const -> std::vector<Token>
         {
-            Reader::CharacterReader reader{source};
+            Reader::CharacterReader reader{ source };
             std::vector<Token> tokens;
 
             // リーダーが終端に達するまで繰り返しスキャンを試行する
@@ -54,9 +54,7 @@ namespace N503::Syntax::Lexing
                     // 解析不能な文字として1文字消費し、Unknown トークンとして記録する
                     const auto state = reader.GetState();
                     reader.Advance();
-                    tokens.push_back(
-                        Token{.Type = TokenType::Unknown, .Lexeme = reader.View(state), .Position = state.Position}
-                    );
+                    tokens.push_back(Token{ .Type = TokenType::Unknown, .Lexeme = reader.View(state), .Position = state.Position });
                 }
             }
 

@@ -72,8 +72,7 @@ namespace N503::Syntax::Grammar
     /// @return 連続する文法を定義した Definition オブジェクト
     template <IsDefinition T, IsDefinition U>
     [[nodiscard]]
-    constexpr auto operator+(const T &, const U &) noexcept
-        -> Definition<Production::Sequence<NodeType::Unknown, typename T::Type, typename U::Type>>
+    constexpr auto operator+(const T&, const U&) noexcept -> Definition<Production::Sequence<NodeType::Unknown, typename T::Type, typename U::Type>>
     {
         return {};
     }
@@ -84,8 +83,7 @@ namespace N503::Syntax::Grammar
     /// @return 選択肢を定義した Definition オブジェクト
     template <IsDefinition T, IsDefinition U>
     [[nodiscard]]
-    constexpr auto operator|(const T &, const U &) noexcept
-        -> Definition<Production::Alternative<typename T::Type, typename U::Type>>
+    constexpr auto operator|(const T&, const U&) noexcept -> Definition<Production::Alternative<typename T::Type, typename U::Type>>
     {
         return {};
     }
@@ -95,7 +93,7 @@ namespace N503::Syntax::Grammar
     /// @return 生成された Definition オブジェクト
     template <typename T>
     [[nodiscard]]
-    constexpr auto Define(const T &) noexcept -> Definition<T>
+    constexpr auto Define(const T&) noexcept -> Definition<T>
     {
         return {};
     }

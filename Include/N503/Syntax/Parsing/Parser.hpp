@@ -24,11 +24,10 @@ namespace N503::Syntax::Parsing
         /// @param sink エラーや警告を報告するための診断シンク
         /// @return 構築されたASTのルートノードへのポインタ
         [[nodiscard]]
-        auto Parse(const std::vector<Token> &tokens, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
-            -> Node *
+        auto Parse(const std::vector<Token>& tokens, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> Node*
         {
-            Reader::TokenReader reader{tokens};
-            auto *const rootNode = arena.Create<Node>(NodeType::Root);
+            Reader::TokenReader reader{ tokens };
+            auto* const rootNode = arena.Create<Node>(NodeType::Root);
 
             // C++17: 畳み込み式を用いて、指定されたプロデューサーを順番に展開・実行
             // 各プロデューサーは特定の構文単位（文、宣言など）を生成する役割を担う
@@ -53,7 +52,7 @@ namespace N503::Syntax::Parsing
             while (reader.CanRead())
             {
                 // 無限ループを防止するための進捗監視
-                auto recoveryGuard = Reader::Guard::ProgressGuard{reader};
+                auto recoveryGuard = Reader::Guard::ProgressGuard{ reader };
 
                 if (const auto token = reader.Peek())
                 {
@@ -61,11 +60,7 @@ namespace N503::Syntax::Parsing
                     rootNode->AddChild(arena.Create<Node>(NodeType::Unknown, *token));
 
                     // 診断シンクに予期せぬトークンの発生を報告
-                    sink.AddEntry(
-                        {N503::Diagnostics::Severity::Error,
-                         "Unexpected token: Input could not be matched with any production.",
-                         token->Position}
-                    );
+                    sink.AddEntry({ N503::Diagnostics::Severity::Error, "Unexpected token: Input could not be matched with any production.", token->Position });
                 }
 
                 // 1トークン分強制的に進めて解析を続行

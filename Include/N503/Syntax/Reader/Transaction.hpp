@@ -12,7 +12,7 @@ namespace N503::Syntax::Reader
     public:
         /// @brief コンストラクタ。現在のリーダーの状態を保存します。
         /// @param reader 操作対象のリーダー
-        explicit Transaction(TReader &reader) : m_Reader{reader}, m_SavedState{reader.GetState()}, m_IsCommitted{false}
+        explicit Transaction(TReader& reader) : m_Reader{ reader }, m_SavedState{ reader.GetState() }, m_IsCommitted{ false }
         {
         }
 
@@ -34,15 +34,15 @@ namespace N503::Syntax::Reader
         }
 
         /// @brief コピーコンストラクタ（禁止）
-        Transaction(const Transaction &) = delete;
+        Transaction(const Transaction&) = delete;
 
         /// @brief コピー代入演算子（禁止）
         /// @return Transaction&
-        auto operator=(const Transaction &) -> Transaction & = delete;
+        auto operator=(const Transaction&) -> Transaction& = delete;
 
     private:
         /// @brief 操作対象のリーダーへの参照
-        TReader &m_Reader;
+        TReader& m_Reader;
 
         /// @brief コンストラクタ呼び出し時に保存されたリーダーの状態
         const State m_SavedState;

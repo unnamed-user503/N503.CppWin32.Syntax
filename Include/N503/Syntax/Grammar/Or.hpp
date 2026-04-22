@@ -23,7 +23,7 @@ namespace N503::Syntax::Grammar
     /// @return いずれかの文法にマッチする選択肢を定義した Definition オブジェクト
     template <typename T, typename U>
     [[nodiscard]]
-    constexpr auto Or(const T &, const U &) noexcept
+    constexpr auto Or(const T&, const U&) noexcept
     {
         return Or<T, U>();
     }

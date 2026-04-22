@@ -25,11 +25,10 @@ namespace N503::Syntax::Production
         /// @param sink 診断情報を記録するシンク
         /// @return 生成されたノードのリスト。途中で解析に失敗した場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &sink) const
-            -> std::vector<Node *>
+        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink& sink) const -> std::vector<Node*>
         {
             auto transaction = reader.BeginTransaction();
-            auto collectedNodes = std::vector<Node *>{};
+            auto collectedNodes = std::vector<Node*>{};
             auto isFailed = false;
 
             // 各要素の順次試行
@@ -83,14 +82,14 @@ namespace N503::Syntax::Production
             // それ以外の場合は親ノードを生成して子要素を格納する
             else
             {
-                auto *const containerNode = arena.Create<Node>(Type);
+                auto* const containerNode = arena.Create<Node>(Type);
 
-                for (auto *const childNode : collectedNodes)
+                for (auto* const childNode : collectedNodes)
                 {
                     containerNode->AddChild(childNode);
                 }
 
-                return {containerNode};
+                return { containerNode };
             }
         }
     };

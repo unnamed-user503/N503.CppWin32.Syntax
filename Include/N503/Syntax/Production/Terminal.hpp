@@ -20,16 +20,15 @@ namespace N503::Syntax::Production
         /// @param Diagnostics::Sink 診断情報を記録するシンク（未使用）
         /// @return 生成された単一ノードを含むリスト。一致しない場合は空のリスト
         [[nodiscard]]
-        auto Produce(Reader::TokenReader &reader, Memory::Storage::Arena &arena, Diagnostics::Sink &) const
-            -> std::vector<Node *>
+        auto Produce(Reader::TokenReader& reader, Memory::Storage::Arena& arena, Diagnostics::Sink&) const -> std::vector<Node*>
         {
             if (const auto token = reader.Peek(); token && TTrait{}(*token))
             {
-                auto *const node = arena.Create<Node>(NodeType::Terminal, *token);
+                auto* const node = arena.Create<Node>(NodeType::Terminal, *token);
 
                 reader.Advance();
 
-                return {node};
+                return { node };
             }
 
             return {};

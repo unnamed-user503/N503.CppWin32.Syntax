@@ -14,7 +14,7 @@ namespace N503::Syntax::Reader::Guard
     public:
         /// @brief ガードを初期化し、現在のリーダーの状態を保存します。
         /// @param reader 監視対象のリーダー
-        explicit ProgressGuard(const TReader &reader) : m_Reader{reader}, m_StartState{reader.GetState()}
+        explicit ProgressGuard(const TReader& reader) : m_Reader{ reader }, m_StartState{ reader.GetState() }
         {
         }
 
@@ -25,19 +25,19 @@ namespace N503::Syntax::Reader::Guard
         {
             if (m_Reader.GetState().Position <= m_StartState.Position)
             {
-                throw std::runtime_error{"N503::Syntax::Parsing::Failsafe: Progress verification failed."};
+                throw std::runtime_error{ "N503::Syntax::Parsing::Failsafe: Progress verification failed." };
             }
         }
 
         /// @brief コピーコンストラクタ（禁止）
-        ProgressGuard(const ProgressGuard &) = delete;
+        ProgressGuard(const ProgressGuard&) = delete;
 
         /// @brief コピー代入演算子（禁止）
-        auto operator=(const ProgressGuard &) -> ProgressGuard & = delete;
+        auto operator=(const ProgressGuard&) -> ProgressGuard& = delete;
 
     private:
         /// @brief 監視対象のリーダーへの参照
-        const TReader &m_Reader;
+        const TReader& m_Reader;
 
         /// @brief ガード開始時のリーダーステート
         const State m_StartState;

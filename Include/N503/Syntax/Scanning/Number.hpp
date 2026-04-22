@@ -10,10 +10,6 @@ namespace N503::Syntax::Scanning
 {
 
     /// @brief
-    using Number = DefaultScanner<
-        TokenType::Number,
-        Lexing::IsNumberHead,
-        Lexing::IsNumberBody,
-        Lexing::IsNumberSeparate>;
+    using Number = DefaultScanner<TokenType::Number, Lexing::IsNumberHead, Lexing::IsNumberBody, Lexing::IsNumberSeparate>;
 
 } // namespace N503::Syntax::Scanning

@@ -10,10 +10,6 @@ namespace N503::Syntax::Scanning
 {
 
     /// @brief
-    using Identifier = DefaultScanner<
-        TokenType::Identifier,
-        Lexing::IsAlpha,
-        Lexing::IsAlnum,
-        Lexing::Not<Lexing::IsAlnum>>;
+    using Identifier = DefaultScanner<TokenType::Identifier, Lexing::IsAlpha, Lexing::IsAlnum, Lexing::Not<Lexing::IsAlnum>>;
 
 } // namespace N503::Syntax::Scanning

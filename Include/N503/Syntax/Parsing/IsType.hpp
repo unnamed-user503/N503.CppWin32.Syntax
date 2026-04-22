@@ -15,7 +15,7 @@ namespace N503::Syntax::Parsing
         /// @param token 判定対象のトークン
         /// @return 種別が一致すれば true
         [[nodiscard]]
-        auto operator()(const Token &token) const -> bool
+        auto operator()(const Token& token) const -> bool
         {
             return token.Type == TargetType;
         }

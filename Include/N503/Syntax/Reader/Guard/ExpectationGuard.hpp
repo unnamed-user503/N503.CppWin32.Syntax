@@ -16,8 +16,7 @@ namespace N503::Syntax::Reader::Guard
         /// @brief ガードを初期化します。
         /// @param reader 現在の状態を取得するためのリーダー
         /// @param sink エラーを報告する先の診断シンク
-        ExpectationGuard(const TReader &reader, Diagnostics::Sink &sink)
-            : m_Reader{reader}, m_Sink{sink}, m_IsCommitted{false}
+        ExpectationGuard(const TReader& reader, Diagnostics::Sink& sink) : m_Reader{ reader }, m_Sink{ sink }, m_IsCommitted{ false }
         {
         }
 
@@ -33,22 +32,22 @@ namespace N503::Syntax::Reader::Guard
         {
             if (!m_IsCommitted)
             {
-                m_Sink.Report({Diagnostics::Severity::Error, m_Reader.GetState().Position, ""});
+                m_Sink.Report({ Diagnostics::Severity::Error, m_Reader.GetState().Position, "" });
             }
         }
 
         /// @brief コピーコンストラクタ（禁止）
-        ExpectationGuard(const ExpectationGuard &) = delete;
+        ExpectationGuard(const ExpectationGuard&) = delete;
 
         /// @brief コピー代入演算子（禁止）
-        auto operator=(const ExpectationGuard &) -> ExpectationGuard & = delete;
+        auto operator=(const ExpectationGuard&) -> ExpectationGuard& = delete;
 
     private:
         /// @brief 参照するリーダー
-        const TReader &m_Reader;
+        const TReader& m_Reader;
 
         /// @brief 報告先の診断シンク
-        Diagnostics::Sink &m_Sink;
+        Diagnostics::Sink& m_Sink;
 
         /// @brief コミット済みフラグ
         bool m_IsCommitted;
